@@ -34,6 +34,9 @@ namespace API
             services.AddDbContext<DataContext>(options => {
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
+            services.AddCors();
+
+
 
             // swagger - ignore
             services.AddSwaggerGen(c =>
@@ -57,6 +60,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 
